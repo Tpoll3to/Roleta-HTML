@@ -1,3 +1,4 @@
+// script.js
 // Variáveis globais
 const canvas = document.getElementById("roleta");
 const ctx = canvas.getContext("2d");
@@ -42,3 +43,44 @@ function iniciarJogo() {
 
 // Iniciar o jogo
 iniciarJogo();
+
+// Event listeners
+document.getElementById("girar").addEventListener("click", girarRoleta);
+document.getElementById("fazer-aposta").addEventListener("click", fazerAposta);
+
+// Função para girar a roleta
+function girarRoleta() {
+    const numeroSorteado = Math.floor(Math.random() * NUM_CASAS);
+    const anguloGiro = anguloInicio + numeroSorteado * anguloCasa;
+    const velocidadeGiro = 0.1;
+    animarGiro(anguloGiro, velocidadeGiro);
+}
+
+// Função para animar o giro da roleta
+function animarGiro(anguloGiro, velocidade) {
+    let anguloAtual = 0;
+    const intervalo = setInterval(() => {
+        desenharRoleta();
+        desenharBola(anguloAtual);
+        anguloAtual += velocidade;
+        if (anguloAtual >= anguloGiro) {
+            clearInterval(intervalo);
+            desenharRoleta();
+            alert("Número sorteado: " + (anguloGiro / anguloCasa));
+        }
+    }, 10);
+}
+
+// Função para desenhar a bola na roleta
+function desenharBola(angulo) {
+    ctx.beginPath();
+    ctx.arc(canvas.width / 2, canvas.height / 2, 10, angulo, angulo + 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
+
+// Função para fazer uma aposta
+function fazerAposta() {
+    // Implementar lógica de fazer aposta
+}

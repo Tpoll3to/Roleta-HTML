@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roleta Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Roleta Online</h1>
+        </header>
+        <main>
+            <div id="mesa">
+                <canvas id="roleta" width="600" height="600"></canvas>
+                <div id="area-apostas">
+                    <input type="number" id="valor-aposta" placeholder="Valor da aposta">
+                    <select id="tipo-aposta">
+                        <option value="numero">Número</option>
+                        <option value="par">Par</option>
+                        <option value="impar">Ímpar</option>
+                    </select>
+                    <button id="fazer-aposta">Fazer Aposta</button>
+                </div>
+            </div>
+            <div id="painel-controle">
+                <div id="saldo">Saldo: R$<span id="saldo-atual">1000</span></div>
+                <div id="botoes">
+                    <button id="girar">Girar</button>
+                    <button id="zerar">Zerar</button>
+                </div>
+                <div id="historico"></div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 - Roleta Online</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
